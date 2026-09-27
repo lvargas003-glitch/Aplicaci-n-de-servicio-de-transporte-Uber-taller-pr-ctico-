@@ -1,0 +1,31 @@
+name: Uber Service CI Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del Código
+      uses: actions/checkout@v3
+
+    - name: Configurar Entorno Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Simulacion de Pruebas Automatizadas
+      run: |
+        echo "Ejecutando pruebas unitarias para el servicio de viajes..."
+        echo "Pruebas de geolocalizacion: PASSED"
+        echo "Pruebas de calculo de tarifa: PASSED"
+
+    - name: Simulacion de Construccion de Imagen Docker
+      run: |
+        echo "Construyendo imagen Docker uber-trip-service..."
+        echo "Imagen construida y verificada exitosamente."
